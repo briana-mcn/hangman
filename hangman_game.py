@@ -8,9 +8,6 @@ user_letter_bank = []
 
 
 # TODO
-# random word into underscores for user display
-# get user guessed letter
-# store user guessed letters
 # evaluate guessed letter to each letter in random word
 # if wrong guess subtract attempts
 # evaluate at end of attempts or no more underscores in word
