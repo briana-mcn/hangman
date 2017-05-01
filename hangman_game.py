@@ -66,18 +66,55 @@ def valid_input(word):
 
 def game_start():
 
+    # start game header
+
+    print("*********************")
+    print("Let's Play Hangman!")
+    print("*********************")
+
+    # counter for attempts
+    attempts = len(hangmen) - 1
+
+    # counter for printed hangman
+    hangmen_count = 1
+    print(hangmen[hangmen_count])
+
     random_word = get_random_word()
-    print(random_word)
+
     underscr_bank = get_underscr(random_word)
     print(' '.join(underscr_bank))
 
-    while True:
+    # end game header
+
+    # iterate until win or lose
+    while '_' in underscr_bank and attempts > 0:
+
         letter = get_user_selection()
-        if letter in random_word:
-            print("yes")
-            continue
+        print("Letter chosen: {}".format(letter))
+
+        # evaluate letter to random word
+        if letter not in random_word:
+            print('{} not in word!'.format(letter))
+            attempts -= 1
+            hangmen_count += 1
+            print(hangmen[hangmen_count])
         else:
-            break
+            for i, v in enumerate(random_word):
+                if letter in v:
+                    print('{} in word!'.format(letter))
+                    underscr_bank[i] = letter
+
+            print(hangmen[hangmen_count])
+
+        print(' '.join(underscr_bank))
+        print("Attempts Left: {}".format(attempts))
+
+    # evaluate winner or loser
+    if attempts == 0:
+        print('You lose! The word was: {}'.format(random_word))
+
+    if '_' not in underscr_bank:
+        print('You win! The word was: {}'.format(random_word))
 
 
 if __name__ == "__main__":
