@@ -33,11 +33,16 @@ def get_underscr(ran_word):
 
 # get user guessed letter
 def get_user_selection():
+
     while True:
         try:
             user_letter = input("Choose a letter: ").lower()
-            valid_input(user_letter)
-            return user_letter
+            valid_letter = valid_input(user_letter)
+            if valid_letter == False:
+                continue
+            else:
+                print(user_letter_bank)
+                return user_letter
         except:
             break
 
@@ -46,15 +51,17 @@ def get_user_selection():
 def valid_input(word):
 
     if not word.isalpha():
-        print('No')
+        print('Please select a letter')
+        return False
     elif len(word) > 1:
         print("Only one letter please.")
+        return False
     elif word in user_letter_bank:
         print("Letter already guessed")
+        return False
     else:
         user_letter_bank.append(word)
-
-    print(user_letter_bank)
+        return True
 
 
 def game_start():
