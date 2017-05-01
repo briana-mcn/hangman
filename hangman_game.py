@@ -1,6 +1,6 @@
 """ The Game of Hangman """
 
-from hangman_dict import hangmen
+from hangman_list import hangmen
 from random_words import RandomWords
 
 
@@ -70,7 +70,7 @@ def game_start():
     attempts = len(hangmen) - 1
 
     # counter for printed hangman
-    hangmen_count = 1
+    hangmen_count = 0
     print(hangmen[hangmen_count])
 
     random_word = get_random_word()
