@@ -7,12 +7,6 @@ from random_words import RandomWords
 user_letter_bank = []
 
 
-# TODO
-# evaluate guessed letter to each letter in random word
-# if wrong guess subtract attempts
-# evaluate at end of attempts or no more underscores in word
-
-
 # get random word
 def get_random_word():
 
